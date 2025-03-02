@@ -1,0 +1,346 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-subtitle {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+}
+
+.search-filter-card {
+    background: white;
+}
+
+.table-card {
+    background: white;
+}
+
+/* Search Box Styles */
+.search-box {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+#searchInput {
+    padding-left: 35px;
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Column widths */
+.table td:first-child {
+    width: 80px;  /* Match ID */
+}
+
+.table td:nth-child(2) {
+    width: 150px; /* Date & Time */
+}
+
+.table td:nth-child(3) {
+    min-width: 200px; /* Teams */
+}
+
+.table td:nth-child(4),
+.table td:nth-child(5) {
+    min-width: 120px; /* Venue & Stadium */
+}
+
+.table td:nth-child(6) {
+    width: 140px; /* Booking Status */
+}
+
+.table td:nth-child(7) {
+    width: 120px; /* Book Tickets */
+    text-align: center;
+}
+
+.table td:nth-child(8) {
+    width: 120px; /* Notifications */
+    text-align: center;
+}
+
+/* Button styles */
+.book-now-btn,
+.subscribe-btn {
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.book-now-btn:hover,
+.subscribe-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Teams styling */
+.teams-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 0.9rem;
+}
+
+.home-team {
+    font-weight: 500;
+    color: #0d6efd;
+}
+
+.away-team {
+    color: #6c757d;
+}
+
+/* Status badge styles */
+.booking-status {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    min-width: 110px;
+    justify-content: center;
+}
+
+.status-available {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-unavailable {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Table Container */
+.table-responsive {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Custom scrollbar for webkit browsers */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Hover effect on rows */
+.table tbody tr:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+/* Card containing table */
+.table-card {
+    overflow: hidden;
+}
+
+/* Date and time container */
+.date-time-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.date-time-container .time {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Last Checked Time Styles */
+.last-checked {
+    font-size: 0.85rem;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Loading Spinner */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Stats in Header */
+.stats {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.stats i {
+    opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-subtitle {
+        display: none;
+    }
+    
+    .stats {
+        text-align: left;
+        margin-top: 10px;
+    }
+}
+
+/* Animation for Status Changes */
+@keyframes statusChange {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.booking-status-changed {
+    animation: statusChange 0.3s ease-in-out;
+}
+
+.match-checkbox {
+    cursor: pointer;
+}
+
+.form-check {
+    display: flex;
+    justify-content: center;
+}
+
+/* Action column styling */
+.table td:last-child {
+    width: 120px;
+    text-align: center;
+}
+
+.btn-outline-primary {
+    border-width: 1.5px;
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-1px);
+    transition: transform 0.2s;
+}
+
+.btn-outline-secondary {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Update table column widths */
+.table td:nth-child(3) {  /* Teams column */
+    min-width: 200px;
+}
+
+.table td:nth-child(8) {  /* Action column */
+    width: 120px;
+}
+
+/* Subscription button styles */
+.subscribe-btn {
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.subscribe-btn.btn-success {
+    opacity: 0.9;
+}
+
+.subscribe-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Modal styles */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Loading state styles */
+.subscribe-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Toast styles */
+.toast-container {
+    z-index: 1050;
+}
+
+.toast {
+    min-width: 300px;
+}
+
+.toast-header {
+    padding: 0.75rem 1rem;
+}
+
+.toast-header .btn-close-white {
+    filter: brightness(0) invert(1);
+}
