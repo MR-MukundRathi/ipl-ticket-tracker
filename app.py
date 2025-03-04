@@ -5,10 +5,15 @@ import json
 import os
 from datetime import datetime
 from google.oauth2 import service_account
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
-
+ # Define the scopes
+scopes = [
+       'https://www.googleapis.com/auth/spreadsheets','https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive'  # Full access
+   ]
 
 # Load Google API credentials from environment variable
 google_api_credentials = os.getenv('GOOGLE_API_CREDENTIALS')
@@ -19,11 +24,8 @@ if not google_api_credentials:
 # Parse the JSON string into a dictionary
 credentials_dict = json.loads(google_api_credentials)
 
-# Google Sheets setup
-SCOPES = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-
 # Create a credentials object
-credentials = service_account.Credentials.from_service_account_info(credentials_dict)
+credentials = service_account.Credentials.from_service_account_info(credentials_dict, scopes=scopes)
 
 # Authorize the gspread client
 gc = gspread.authorize(credentials)
