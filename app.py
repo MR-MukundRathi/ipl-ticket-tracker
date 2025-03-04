@@ -4,12 +4,23 @@ from oauth2client.service_account import ServiceAccountCredentials
 import json
 import os
 from datetime import datetime
+from google.oauth2 import service_account
 
 app = Flask(__name__)
 
-# Google Sheets setup
-SCOPES = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', SCOPES)
+# Load Google API credentials from environment variable
+google_api_credentials = os.getenv('GOOGLE_API_CREDENTIALS')
+
+if not google_api_credentials:
+    raise ValueError("GOOGLE_API_CREDENTIALS environment variable is not set.")
+
+# Parse the JSON string into a dictionary
+credentials_dict = json.loads(google_api_credentials)
+
+# Create a credentials object
+credentials = service_account.Credentials.from_service_account_info(credentials_dict)
+
+# Authorize the gspread client
 gc = gspread.authorize(credentials)
 
 @app.route('/')
@@ -40,6 +51,7 @@ def get_match_details(match_id):
             return jsonify(match)
         return jsonify({'error': 'Match not found'}), 404
     except Exception as e:
+        print(f"Error fetching match details: {str(e)}")  # Debug log
         return jsonify({'error': str(e)}), 500
 
 @app.route('/subscribe', methods=['POST'])
