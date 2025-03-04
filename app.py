@@ -5,8 +5,6 @@ import json
 import os
 from datetime import datetime
 from google.oauth2 import service_account
-from dotenv import load_dotenv
-load_dotenv()
 
 app = Flask(__name__)
 
