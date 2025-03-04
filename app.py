@@ -8,6 +8,8 @@ from google.oauth2 import service_account
 
 app = Flask(__name__)
 
+
+
 # Load Google API credentials from environment variable
 google_api_credentials = os.getenv('GOOGLE_API_CREDENTIALS')
 
@@ -16,6 +18,9 @@ if not google_api_credentials:
 
 # Parse the JSON string into a dictionary
 credentials_dict = json.loads(google_api_credentials)
+
+# Google Sheets setup
+SCOPES = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 
 # Create a credentials object
 credentials = service_account.Credentials.from_service_account_info(credentials_dict)
